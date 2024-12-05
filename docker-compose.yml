@@ -1,0 +1,28 @@
+version: '3.4'
+
+services:
+  patientapi:
+    image: patientapi
+    build:
+      context: .
+      dockerfile: /PatientApi/Dockerfile
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+
+  patientgenerator:
+    image: patientgenerator
+    build:
+      context: .
+      dockerfile: /PatientGenerator/Dockerfile
+    depends_on:
+      - patientapi
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      SA_PASSWORD: "Your_password123"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
