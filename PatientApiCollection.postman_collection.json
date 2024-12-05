@@ -1,0 +1,269 @@
+{
+	"info": {
+		"_postman_id": "194cc6d4-c951-4dd7-82d3-0c782e519c12",
+		"name": "PatientApiCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39290925"
+	},
+	"item": [
+		{
+			"name": "AddPatient",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"id\": \"d8ff176f-bd0a-4b8e-b329-871952e32e1f\",\r\n    \"use\": \"official\",\r\n    \"family\": \"Иванов\",\r\n    \"given\": [\"Иван\", \"Иванович\"]\r\n  },\r\n  \"gender\": \"male\",\r\n  \"birthDate\": \"2024-01-13T18:25:43\",\r\n  \"active\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/Patients",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Patients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EditPatient",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"d8ff176f-bd0a-4b8e-b329-871952e32e1f\",\r\n  \"name\": {\r\n    \"id\": \"d8ff176f-bd0a-4b8e-b329-871952e32e1f\",\r\n    \"use\": \"official\",\r\n    \"family\": \"Петров\",\r\n    \"given\": [\"Петр\", \"Петрович\"]\r\n  },\r\n  \"gender\": \"male\",\r\n  \"birthDate\": \"2024-01-13T18:25:43\",\r\n  \"active\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/Patients/{id}",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Patients",
+						"{id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPatientByID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/Patients/{id}",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Patients",
+						"{id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeletePatient",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/Patients/{id}",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Patients",
+						"{id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPatientsByBirthDateEQ",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/patients/search?birthDate=eq2024-01-13",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"patients",
+						"search"
+					],
+					"query": [
+						{
+							"key": "birthDate",
+							"value": "eq2024-01-13"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPatientsByBirthDateNE",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/patients/search?birthDate=ne2024-01-13",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"patients",
+						"search"
+					],
+					"query": [
+						{
+							"key": "birthDate",
+							"value": "ne2024-01-13"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPatientsByBirthDateGT",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/patients/search?birthDate=gt2024-01-13",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"patients",
+						"search"
+					],
+					"query": [
+						{
+							"key": "birthDate",
+							"value": "gt2024-01-13"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPatientsByBirthDateLT",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/patients/search?birthDate=lt2024-01-13",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"patients",
+						"search"
+					],
+					"query": [
+						{
+							"key": "birthDate",
+							"value": "lt2024-01-13"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPatientsByBirthDateGE",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/patients/search?birthDate=ge2024-01-13",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"patients",
+						"search"
+					],
+					"query": [
+						{
+							"key": "birthDate",
+							"value": "ge2024-01-13"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPatientsByBirthDateLE",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/patients/search?birthDate=le2024-01-13",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"patients",
+						"search"
+					],
+					"query": [
+						{
+							"key": "birthDate",
+							"value": "le2024-01-13"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -12,6 +12,11 @@ builder.Services.AddDbContext<PatientContext>(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddHttpsRedirection(options =>
+{
+    options.HttpsPort = 5000;
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -26,5 +31,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+//app.UseDeveloperExceptionPage();
 
 app.Run();

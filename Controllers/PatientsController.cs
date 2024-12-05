@@ -94,11 +94,52 @@ namespace PatientApi.Controllers
         }
 
         [HttpGet("search")]
+        // FHIR comlient
         public async Task<ActionResult<IEnumerable<Patient>>> SearchPatients([FromQuery] string birthDate)
         {
-            var patients = await _context.Patients.ToListAsync();
-            var filteredPatients = patients.Where(p => p.BirthDate.ToString("yyyy-MM-dd") == birthDate).ToList();
-            return filteredPatients;
+            if (string.IsNullOrEmpty(birthDate))
+            {
+                return BadRequest("birthDate parameter is required.");
+            }
+
+            var query = _context.Patients.AsQueryable();
+
+            if (birthDate.StartsWith("eq"))
+            {
+                var date = DateTime.Parse(birthDate.Substring(2));
+                query = query.Where(p => p.BirthDate == date);
+            }
+            else if (birthDate.StartsWith("ne"))
+            {
+                var date = DateTime.Parse(birthDate.Substring(2));
+                query = query.Where(p => p.BirthDate != date);
+            }
+            else if (birthDate.StartsWith("gt"))
+            {
+                var date = DateTime.Parse(birthDate.Substring(2));
+                query = query.Where(p => p.BirthDate > date);
+            }
+            else if (birthDate.StartsWith("lt"))
+            {
+                var date = DateTime.Parse(birthDate.Substring(2));
+                query = query.Where(p => p.BirthDate < date);
+            }
+            else if (birthDate.StartsWith("ge"))
+            {
+                var date = DateTime.Parse(birthDate.Substring(2));
+                query = query.Where(p => p.BirthDate >= date);
+            }
+            else if (birthDate.StartsWith("le"))
+            {
+                var date = DateTime.Parse(birthDate.Substring(2));
+                query = query.Where(p => p.BirthDate <= date);
+            }
+            else
+            {
+                return BadRequest("Invalid birthDate parameter format.");
+            }
+
+            return await query.ToListAsync();
         }
     }
 }
